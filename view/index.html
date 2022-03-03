@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>E-Mail</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <form class="text-center border border-light p-5" action="#!">
+
+        <p class="h4 mb-4">Send Mail</p>
+
+        <!-- Email -->
+        <input type="email" id="email" class="form-control mb-4" placeholder="E-mail">
+
+        <!-- Subject -->
+        <input type="text" id="subject" class="form-control mb-4" placeholder="Subject">
+
+        <!-- Message -->
+        <div class="form-group">
+            <textarea class="form-control rounded-0" id="text" rows="3" placeholder="Message"></textarea>
+        </div>
+
+
+
+        <!-- Send button -->
+        <button class="btn btn-info btn-block" type="submit" value="submit">Submit</button>
+
+    </form>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $("form").on("submit", (e) => {
+            e.preventDefault();
+            const email = $("#email").val().trim();
+            const subject = $("#subject").val().trim();
+            const text = $("#text").val().trim();
+
+            const data = {
+                email,
+                subject,
+                text
+            }
+            $.post("/email", data, function () {
+                console.log("Server recieved our data!");
+            })
+
+        })
+    </script>
+</body>
+
+</html>
