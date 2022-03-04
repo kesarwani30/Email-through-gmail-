@@ -21,7 +21,7 @@ app.post("/email",(req,res)=>{
         }
     })
 
-    return res.sendFile(path.join(__dirname,"view","success.html"))
+
 })
 
 
